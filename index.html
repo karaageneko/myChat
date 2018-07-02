@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>自作チャット</title>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="myChat.css">
+</head>
+<body>
+
+  <div data-role="page" id="top">
+    <div data-role="header">
+      <h1>自作チャット</h1>
+    </div>
+    <div role="main" class="ui-content">
+      <p>ここはトップページです</p>
+      <div class="panel-footer">
+        <input type='text' class="form-control" id="mynameInput" placeholder="あなたの名前を入力してください">
+      </div>
+      <div class="panel-footer">
+        <input type='text' class="form-control" id="yournameInput" placeholder="トーク相手の名前を入力してください">
+      </div>
+      <div class="panel-footer">
+        <input type='text' class="form-control" id="roomnameInput" placeholder="ルーム名を入力してください">
+      </div>
+      <input type="button" name="link" value="チャットページへ" onclick="movetoChatPage()">
+
+    </div>
+  </div>
+
+  <div data-role="page" id="sub">
+    <div data-role="header">
+      <h1>自作チャット</h1>
+    </div>
+    <div role="main" class="ui-content">
+      <p>ここはチャットページです</p>
+      <input type="button" name="link" value="トップページへ" onclick="movetoTopPage()">
+    </div>
+
+    <div id="scroller" class="panel-body">
+      <ul id='messages'>
+      </ul>
+    </div>
+    <div class="panel-footer">
+      <input type='text' class="form-control" id="messageInput" placeholder="メッセージ内容を入力してください">
+    </div>
+
+  </div>
+</div>
+
+</body>
+<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDksr23GXsk6f4loMyG31YcPxxnqhbDH7E",
+    authDomain: "chatpractic.firebaseapp.com",
+    databaseURL: "https://chatpractic.firebaseio.com",
+    projectId: "chatpractic",
+    storageBucket: "chatpractic.appspot.com",
+    messagingSenderId: "832471007797"
+  };
+  firebase.initializeApp(config);
+  const databaseRef = firebase.database().ref();
+</script>
+<script src="myChat.js"></script>
+</html>
